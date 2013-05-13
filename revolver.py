@@ -1,5 +1,3 @@
-#Splits your article into 6 important bullets
-
 # coding=UTF-8
 from __future__ import division
 import re
@@ -7,10 +5,8 @@ import sys
 from goose import Goose
 import heapq
 
-# This is a naive text summarization algorithm
-# Created by Shlomi Babluki
-# April, 2013
-
+# Splits your article into 6 important bullets
+# With plenty of code from Shlomi Babluki - http://thetokenizer.com/2013/04/28/build-your-own-summary-tool/
 
 class SummaryTool(object):
 
@@ -85,17 +81,12 @@ class SummaryTool(object):
         return top_sentences
 
 
-
 # Main method, just run "python summary_tool.py"
 def main():
-
-    
     url = sys.argv[1]
     article = Goose({'browser_user_agent': 'Mozilla'}).extract(url=url)
     title = article.title
     content = article.cleaned_text
-
-
 
     # Create a SummaryTool object
     st = SummaryTool()
@@ -109,7 +100,6 @@ def main():
     # Print the summary
     for x in summary:
         print x
-
 
 
 if __name__ == '__main__':
