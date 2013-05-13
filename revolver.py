@@ -47,7 +47,7 @@ class SummaryTool(object):
         # Split the content into sentences
         sentences = self.split_content_to_sentences(content)
 
-        print "this many sentenes ", len(sentences)
+
 
         # Calculate the intersection of every two sentences
         n = len(sentences)
@@ -74,10 +74,6 @@ class SummaryTool(object):
             return heapq.nlargest(n ,d, key = lambda k: d[k])
         top_sentences = dict_nlargest(sentences_dic, 6)
 
-        for x in sentences_dic:
-            print sentences_dic[x]
-
-
         return top_sentences
 
 
@@ -98,8 +94,12 @@ def main():
     summary = st.get_best_sentences(sentences_dic)
 
     # Print the summary
+    print ""
+    print title
+    print ""
     for x in summary:
-        print x
+        print "* ", x
+        print ""
 
 
 if __name__ == '__main__':
